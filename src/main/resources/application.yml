@@ -1,0 +1,13 @@
+server:
+  port: 9999
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: after_router
+          uri: https://www.jianshu.com
+          predicates:
+            - Cookie=lsq, lsq.*
+            - Header=User-Agent, Mozilla/5.0.*
+            - Method=Get
+            - Path=/users/{userId}
